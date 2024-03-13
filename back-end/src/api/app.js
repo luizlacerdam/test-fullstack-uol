@@ -5,6 +5,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use('/test', (req, res) => { res.send('Hello World!'); });
+const { userRouter } = require('../routers');
 
+app.use('/test', (req, res) => { res.send('Hello World!'); });
+app.use('/user', userRouter);
 module.exports = app;
