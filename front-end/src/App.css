@@ -3,10 +3,19 @@
 }
 
 .navbar img {
-    width: 75px;
-    height: 75px;
+    width: 100px;
 }
 
 .person-icon {
     font-size: 2.5em !important;
+}
+
+.button-orange {
+    background-color: #FFA500 !important;
+    border: #FFA500 !important;
+}
+
+.button-orange:hover {
+    background-color: #cc8400 !important;
+    border: #cc8400 !important;
 }
