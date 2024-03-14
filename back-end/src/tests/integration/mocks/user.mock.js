@@ -2,7 +2,7 @@ const usersMock = [
     {
       id: 1,
       name: 'Fulano',
-      email: 'fulano@email.com',
+      email: 'fulano2@email.com',
       cpf: '12345678907',
       telephone: '11999999999',
       status: 'active',

@@ -1,6 +1,5 @@
 const chai = require('chai');
 const sinon = require('sinon');
-const fs = require('fs');
 const chaiHttp = require('chai-http');
 const { user } = require('../../database/models');
 const { userMock, usersMock, newUserMock } = require('./mocks/user.mock');
@@ -28,7 +27,7 @@ describe('Testing /user router', function () {
         expect(chaihttpResponse.status).to.be.equal(200);
         expect(chaihttpResponse.body).to.be.deep.equal(userMock);
     });
-    it('PATCH in /user/1 returns "User updated successfully" and update user', async function () {
+    it('PATCH in /user/1 returns "User updated successfully" and updates user', async function () {
         sinon.stub(user, 'update').resolves(1);
 
         const chaihttpResponse = await chai.request(app).patch('/user/1')
