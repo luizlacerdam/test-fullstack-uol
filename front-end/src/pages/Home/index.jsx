@@ -1,7 +1,10 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import { useLoaderData } from 'react-router-dom';
 
 export default function Home() {
+  const dataProducts = useLoaderData();
+  console.log(dataProducts);
   return (
     <div className="container">
       <div className="d-flex flex-direction-row justify-content-between">
