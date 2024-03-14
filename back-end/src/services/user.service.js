@@ -6,7 +6,7 @@ const createUser = async (newUser) => {
 };
 
 const editUser = async (id, updatedUser) => {
-    const [updated] = await user.update(updatedUser, {
+    const updated = await user.update(updatedUser, {
         where: { id },
     });
     return updated;
