@@ -19,3 +19,21 @@
     background-color: #cc8400 !important;
     border: #cc8400 !important;
 }
+
+.button-white {
+    background-color: white !important;
+    border: 1px solid #FFA500 !important;
+    color: #FFA500 !important;
+}
+
+.button-white:hover {
+    background-color: #FFA500 !important;
+    border: #FFA500 !important;
+    color: white !important;
+}
+
+
+.status-dot {
+    height: 10px;
+    width: 10px;
+}
