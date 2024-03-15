@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from 'react-bootstrap/esm/Button';
+import PropTypes from 'prop-types';
 
 export default function ClientCard({ client }) {
   const statusDictionary = {
@@ -48,3 +49,13 @@ export default function ClientCard({ client }) {
     </div>
   );
 }
+
+ClientCard.propTypes = {
+  client: PropTypes.shape({
+    name: PropTypes.string,
+    email: PropTypes.string,
+    cpf: PropTypes.string,
+    telephone: PropTypes.string,
+    status: PropTypes.string,
+  }).isRequired,
+};

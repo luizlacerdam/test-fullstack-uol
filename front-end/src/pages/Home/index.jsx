@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { useLoaderData } from 'react-router-dom';
 import ClientCard from './components/clientCard';
