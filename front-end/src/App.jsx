@@ -10,6 +10,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import Home from './pages/Home';
 import Layout from './pages/LayoutComponents/Layout';
 import clientsLoader from './pages/Home/loaders/clientsLoader';
+import CreateCliente from './pages/CreateCliente';
 
 export default function App() {
   const route = createBrowserRouter(createRoutesFromElements(
@@ -21,7 +22,10 @@ export default function App() {
           path="/"
           element={ <Home /> }
         />
-
+        <Route
+          path="/create-client"
+          element={ <CreateCliente /> }
+        />
       </Route>
       ,
     </>,

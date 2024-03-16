@@ -1,10 +1,11 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import ClientCard from './components/clientCard';
 
 export default function Home() {
   const { data } = useLoaderData();
+  const navigate = useNavigate();
 
   return (
     <div className="container">
@@ -20,7 +21,10 @@ export default function Home() {
           </span>
         </div>
         <div className="m-5">
-          <Button className="button-orange px-3 p-2">
+          <Button
+            className="button-orange px-3 p-2"
+            onClick={ () => navigate('/create-client') }
+          >
             <span className="text-white fs-5">
               Novo Cliente
             </span>

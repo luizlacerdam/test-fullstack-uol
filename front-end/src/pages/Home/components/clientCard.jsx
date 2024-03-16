@@ -1,8 +1,11 @@
 import React from 'react';
 import Button from 'react-bootstrap/esm/Button';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
 export default function ClientCard({ client }) {
+  const navigate = useNavigate();
+
   const statusDictionary = {
     active: { text: 'Ativo', color: 'bg-success' },
     waiting_activation: { text: 'Aguardando ativação', color: 'bg-warning' },
@@ -40,7 +43,10 @@ export default function ClientCard({ client }) {
         </span>
       </div>
       <div className="d-flex justify-content-end align-items-center">
-        <Button className="h-100 px-5 py-1 button-white">
+        <Button
+          className="h-100 px-5 py-1 button-white"
+          onClick={ () => navigate(`/client/${client.id}`) }
+        >
           <span className="fs-4">
             Editar
           </span>
@@ -52,6 +58,7 @@ export default function ClientCard({ client }) {
 
 ClientCard.propTypes = {
   client: PropTypes.shape({
+    id: PropTypes.number,
     name: PropTypes.string,
     email: PropTypes.string,
     cpf: PropTypes.string,
