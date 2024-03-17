@@ -1,8 +1,11 @@
+/* eslint-disable sonarjs/prefer-single-boolean-return */
+/* eslint-disable no-alert */
 /* eslint-disable max-len */
 /* eslint-disable no-magic-numbers */
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
+import { requestPost } from '../../utils/requests';
 
 export default function CreateCliente() {
   const [name, setName] = useState('');
@@ -11,6 +14,20 @@ export default function CreateCliente() {
   const [telephone, setTelephone] = useState('');
   const [status, setStatus] = useState('Status');
   const navigate = useNavigate();
+
+  const cpfValidation = (value) => {
+    if (value.length !== 14) {
+      return false;
+    }
+    return true;
+  };
+
+  const telephoneValidation = (value) => {
+    if (value.length !== 16) {
+      return false;
+    }
+    return true;
+  };
 
   const formatCpf = (value) => {
     const cpfNumbers = value.replace(/\D/g, '');
@@ -35,15 +52,37 @@ export default function CreateCliente() {
 
     if (phoneNumbers.length <= 2) {
       formattedPhone = `(${phoneNumbers}`;
-    } else if (phoneNumbers.length <= 3) {
-      formattedPhone = `(${phoneNumbers.slice(0, 2)}) ${phoneNumbers.slice(2)}`;
     } else if (phoneNumbers.length <= 7) {
-      formattedPhone = `(${phoneNumbers.slice(0, 2)}) ${phoneNumbers.slice(2, 3)} ${phoneNumbers.slice(3)}`;
+      formattedPhone = `(${phoneNumbers.slice(0, 2)}) ${phoneNumbers.slice(2, 7)}`;
     } else {
-      formattedPhone = `(${phoneNumbers.slice(0, 2)}) ${phoneNumbers.slice(2, 3)} ${phoneNumbers.slice(3, 7)}-${phoneNumbers.slice(7, 11)}`;
+      formattedPhone = `(${phoneNumbers.slice(0, 2)}) ${phoneNumbers.slice(2, 7)}-${phoneNumbers.slice(7, 11)}`;
     }
 
     return formattedPhone;
+  };
+
+  const handleCreate = async () => {
+    if (name === '' || email === '' || cpf === '' || telephone === '' || status === '') {
+      alert('Preencha todos os campos');
+    } else if (!cpfValidation(cpf)) {
+      alert('CPF inválido');
+    } else if (!telephoneValidation(telephone)) {
+      alert('Telefone inválido');
+    } else {
+      const result = await requestPost('/user', {
+        name,
+        email,
+        cpf,
+        telephone,
+        status,
+      });
+      if (result.status !== 201) {
+        alert('Erro ao criar usuário');
+      } else {
+        alert('Usuário criado com sucesso');
+        navigate('/');
+      }
+    }
   };
 
   return (
@@ -103,6 +142,7 @@ export default function CreateCliente() {
         <div className="w-50 d-flex mt-5">
           <Button
             className="button-orange p-2 px-5 me-4"
+            onClick={ handleCreate }
           >
             <span
               className="fs-5"
