@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
 export default function CreateCliente() {
   const [name, setName] = useState('');
@@ -7,6 +8,7 @@ export default function CreateCliente() {
   const [cpf, setCpf] = useState('');
   const [telephone, setTelephone] = useState('');
   const [status, setStatus] = useState('Status');
+  const navigate = useNavigate();
   return (
     <div className="container">
       <div className="d-flex flex-column justify-content-between">
@@ -73,10 +75,10 @@ export default function CreateCliente() {
           </Button>
           <Button
             className="button-white px-5 ms-4"
+            onClick={ () => navigate('/') }
           >
             <span
               className="fs-5"
-
             >
               Voltar
             </span>
