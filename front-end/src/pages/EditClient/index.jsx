@@ -4,15 +4,17 @@
 /* eslint-disable no-magic-numbers */
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
-import { useNavigate } from 'react-router-dom';
-import { requestPost } from '../../utils/requests';
+import { useLoaderData, useNavigate } from 'react-router-dom';
+import { requestPatch } from '../../utils/requests';
 
-export default function CreateCliente() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [cpf, setCpf] = useState('');
-  const [telephone, setTelephone] = useState('');
-  const [status, setStatus] = useState('Status');
+export default function EditClient() {
+  const { data } = useLoaderData();
+
+  const [name, setName] = useState(data.name);
+  const [email, setEmail] = useState(data.email);
+  const [cpf, setCpf] = useState(data.cpf);
+  const [telephone, setTelephone] = useState(data.telephone);
+  const [status, setStatus] = useState(data.status);
   const navigate = useNavigate();
 
   const cpfValidation = (value) => {
@@ -61,7 +63,7 @@ export default function CreateCliente() {
     return formattedPhone;
   };
 
-  const handleCreate = async () => {
+  const handleUpdate = async () => {
     if (name === '' || email === '' || cpf === '' || telephone === '' || status === '') {
       alert('Preencha todos os campos');
     } else if (!cpfValidation(cpf)) {
@@ -69,17 +71,17 @@ export default function CreateCliente() {
     } else if (!telephoneValidation(telephone)) {
       alert('Telefone inválido');
     } else {
-      const result = await requestPost('/user', {
+      const result = await requestPatch(`/user/${data.id}`, {
         name,
         email,
         cpf,
         telephone,
         status,
       });
-      if (result.status !== 201) {
-        alert('Erro ao criar usuário');
+      if (result.status !== 200) {
+        alert('Erro ao atualizar usuário');
       } else {
-        alert('Usuário criado com sucesso');
+        alert('Usuário atualizar com sucesso');
         navigate('/');
       }
     }
@@ -95,7 +97,7 @@ export default function CreateCliente() {
             Listagem de usuários
           </h4>
           <span className="text-secondary fs-5">
-            Informe os campos a seguir para criar novo usuário:
+            Informe os campos a seguir para editar usuário:
           </span>
         </div>
         <div className="d-flex flex-column w-25">
@@ -142,12 +144,12 @@ export default function CreateCliente() {
         <div className="w-50 d-flex mt-5">
           <Button
             className="button-orange p-2 px-5 me-4"
-            onClick={ handleCreate }
+            onClick={ handleUpdate }
           >
             <span
               className="fs-5"
             >
-              Criar
+              Atualizar
             </span>
           </Button>
           <Button

@@ -16,6 +16,11 @@ export const requestData = async (endpoint) => {
   return data;
 };
 
+export const requestPatch = async (endpoint, body) => {
+  const data = await api.patch(endpoint, body);
+  return data;
+};
+
 export const requestDataWithToken = async (endpoint, token) => {
   const { data } = await api.get(endpoint, { headers: { Authorization: token } });
   return data;
