@@ -16,9 +16,7 @@ vi.mock('react-router-dom', () => {
 
 it('should find text in home page', () => {
   render(
-
     <Home />,
-
   );
   expect(screen.getByText(/Listagem de usuários/i)).toBeInTheDocument();
   expect(screen.getByText(/Escolha um cliente para visializar os detalhes/i)).toBeInTheDocument();
