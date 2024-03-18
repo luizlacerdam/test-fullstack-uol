@@ -14,6 +14,10 @@ vi.mock('react-router-dom', () => {
   };
 });
 
+vi.mock('../src/utils/requests', () => ({
+  requestPatch: vi.fn(() => Promise.resolve({ status: 200 })),
+}));
+
 describe('3. EditClient', () => {
   beforeEach(() => {
     window.alert = vi.fn();
