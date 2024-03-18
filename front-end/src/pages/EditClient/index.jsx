@@ -63,13 +63,22 @@ export default function EditClient() {
     return formattedPhone;
   };
 
+  const emailValidation = (value) => {
+    const emailRegex = /\S+@\S+\.\S+/;
+    return emailRegex.test(value);
+  };
+
   const handleUpdate = async () => {
     if (name === '' || email === '' || cpf === '' || telephone === '' || status === '') {
       alert('Preencha todos os campos');
+    } else if (!emailValidation(email)) {
+      alert('Insira um e-mail válido');
     } else if (!cpfValidation(cpf)) {
-      alert('CPF inválido');
+      alert('Insira um CPF válido');
     } else if (!telephoneValidation(telephone)) {
-      alert('Telefone inválido');
+      alert('Insira um telephone válido');
+    } else if (status === 'Status') {
+      alert('Selecione um status');
     } else {
       const result = await requestPatch(`/user/${data.id}`, {
         name,
@@ -81,7 +90,7 @@ export default function EditClient() {
       if (result.status !== 200) {
         alert('Erro ao atualizar usuário');
       } else {
-        alert('Usuário atualizar com sucesso');
+        alert('Usuário atualizado com sucesso');
         navigate('/');
       }
     }
