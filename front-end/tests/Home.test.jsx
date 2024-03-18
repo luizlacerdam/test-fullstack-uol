@@ -16,8 +16,8 @@ vi.mock('react-router-dom', () => {
   };
 });
 
-describe('Home', () => {
-  it('should find text before user list in home page', () => {
+describe('1. Home', () => {
+  it('1.1. Should find text before user list in home page', () => {
     render(
       <Home />,
     );
@@ -25,14 +25,14 @@ describe('Home', () => {
     expect(screen.getByText(/Escolha um cliente para visializar os detalhes/i)).toBeInTheDocument();
   });
 
-  it('should find button to create new user in home page', () => {
+  it('1.2. Should find button to create new user in home page', () => {
     render(
       <Home />,
     );
     expect(screen.getByText(/Novo Cliente/i)).toBeInTheDocument();
   });
 
-  it('should find user list in home page', () => {
+  it('1.3. Should find user list in home page', () => {
     render(
       <Home />,
     );
@@ -48,14 +48,14 @@ describe('Home', () => {
     expect(editButtons.length).toBe(usersMock.length);
   });
 
-  it('should find number of users in home page', () => {
+  it('1.4. Should find number of users in home page', () => {
     render(
       <Home />,
     );
     expect(screen.getByText(`Exibindo ${usersMock.length} clientes`)).toBeInTheDocument();
   });
 
-  it('shoudl go to create user page when click on new user button', () => {
+  it('1.5. Should go to create user page when click on new user button', () => {
     render(
       <Home />,
     );
@@ -64,7 +64,7 @@ describe('Home', () => {
     expect(mockNavigate).toHaveBeenCalledWith('/create-client');
   });
 
-  it('shoudl go to edit user page when click on edit button', () => {
+  it('1.6. Shoudl go to edit user page when click on edit button', () => {
     render(
       <Home />,
     );

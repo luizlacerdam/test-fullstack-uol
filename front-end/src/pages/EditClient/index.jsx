@@ -94,7 +94,7 @@ export default function EditClient() {
           <h4
             className="text-secondary"
           >
-            Listagem de usuários
+            Editar usuário
           </h4>
           <span className="text-secondary fs-5">
             Informe os campos a seguir para editar usuário:

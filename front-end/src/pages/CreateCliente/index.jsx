@@ -61,13 +61,22 @@ export default function CreateCliente() {
     return formattedPhone;
   };
 
+  const emailValidation = (value) => {
+    const emailRegex = /\S+@\S+\.\S+/;
+    return emailRegex.test(value);
+  };
+
   const handleCreate = async () => {
     if (name === '' || email === '' || cpf === '' || telephone === '' || status === '') {
       alert('Preencha todos os campos');
+    } else if (!emailValidation(email)) {
+      alert('Insira um e-mail válido');
     } else if (!cpfValidation(cpf)) {
-      alert('CPF inválido');
+      alert('Insira um CPF válido');
     } else if (!telephoneValidation(telephone)) {
-      alert('Telefone inválido');
+      alert('Insira um telephone válido');
+    } else if (status === 'Status') {
+      alert('Selecione um status');
     } else {
       const result = await requestPost('/user', {
         name,
@@ -92,7 +101,7 @@ export default function CreateCliente() {
           <h4
             className="text-secondary"
           >
-            Listagem de usuários
+            Novo usuário
           </h4>
           <span className="text-secondary fs-5">
             Informe os campos a seguir para criar novo usuário:
