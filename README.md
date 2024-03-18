@@ -1,41 +1,88 @@
-# Teste Fullstack: Aplicativo de Gerenciamento de Clientes
 
-## Descrição:
+# Teste Fullstack: Aplicativo de Gerenciamento de Clientes
 
 Neste desafio, você deverá desenvolver um aplicativo fullstack que permita aos usuários visualizar e criar clientes. O aplicativo consiste em duas partes: o frontend e o backend. O frontend será responsável pela interface do usuário e a comunicação com a API. O backend será responsável pelo armazenamento e gerenciamento dos dados dos clientes.
 
-## Requisitos do Frontend:
 
-1. Exibir uma listagem de clientes contendo todas as informações conforme o layout fornecido.
-2. Permitir a criação de um novo cliente através de um formulário.
-3. Na tela de edição, fornecer alertas para o usuário em caso de dados inválidos.
-4. Realizar validação de CPF e telefone na tela de edição para garantir dados corretos e consistentes.
-5. Comunicar-se com a API para obter os dados dos clientes cadastrados.
+## Funcionalidades
 
-## Requisitos do Backend:
+- Listagem de clientes
+- Adição de novo cliente
+- Edição de cliente
+- Verificação de formação e alertas no preenchimento de campos
 
-Criar uma API que ofereça endpoints para:
 
-1. Obter a listagem de clientes cadastrados.
-2. Cadastrar um novo cliente com informações válidas.
-3. Atualizar informações de cliente existente.
-4. Armazenar os dados do cliente de forma persistente, com sugestão de uso do SQLite para essa finalidade.
+## Demonstração
+![Criação de usuario](/exemplo1.gif)
+![Alertas na criação e edição](/exemplo2.gif)
 
-## Requisitos de Qualidade de Código:
 
-Escreva um código limpo, legível e bem organizado.
-Adote boas práticas de desenvolvimento e arquitetura.
 
-## Itens Desejáveis (opcional):
 
-- Testes unitários
-- Bibliotecas ou frameworks adicionais
+## Rodando os testes
 
-## Telas:
+Para rodar os testes, rode o seguinte comando no back-end ou no front-end
 
-- [Tela Inicial](https://test-frontend-uolpp.web.app/assets/images/tela-inicial.jpg)
-- [Tela de Edição](https://test-frontend-uolpp.web.app/assets/images/tela-edicao.jpg)
+```bash
+  npm test
+```
 
-## Instruções Finais:
 
-Após concluir o desafio, crie um pull request neste repositório com duas pastas separadas: uma contendo o projeto frontend e outra com o projeto backend, para que possamos avaliar seu trabalho. Boa sorte!
+## Variáveis de Ambiente
+
+Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env do back-end
+
+```bash
+  PORT
+  MYSQLHOST
+  MYSQLPORT
+  MYSQLUSER
+  MYSQLPASSWORD
+  MYSQLDATABASE
+```
+e no front-end
+
+```bash
+VITE_HOST
+VITE_PROTOCOL
+PORT
+```
+
+
+## Instalação
+
+Crie um container utilizando Docker para o mysql
+
+```bash
+  docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=password -d mysql
+```
+
+No diretorio do projeto, mude de path para back-end
+
+```bash
+  cd back-end/
+```
+Instale as dependencias
+```bash
+  npm i
+```
+Migre as migrations e preenchaa database
+```bash
+  npm run db:reset
+```
+Inicie o back-end
+```bash
+  npm run dev
+```
+Vá para o diretório do front-end
+```bash
+  cd ../front-end/
+```
+Instale as dependencias
+```bash
+  npm i
+```
+Inicie a aplicação
+```bash
+  npm run dev
+```
