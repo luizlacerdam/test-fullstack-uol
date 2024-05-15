@@ -1,36 +1,35 @@
 
 # Teste Fullstack: Aplicativo de Gerenciamento de Clientes
 
-Neste desafio, você deverá desenvolver um aplicativo fullstack que permita aos usuários visualizar e criar clientes. O aplicativo consiste em duas partes: o frontend e o backend. O frontend será responsável pela interface do usuário e a comunicação com a API. O backend será responsável pelo armazenamento e gerenciamento dos dados dos clientes.
+In this challenge, I was required to develop a fullstack application that allows users to view and create customers. The application consists of two parts: the frontend and the backend. The frontend will be responsible for the user interface and communication with the API. The backend will handle the storage and management of customer data.
 
 
-## Funcionalidades
+## Features
 
-- Listagem de clientes
-- Adição de novo cliente
-- Edição de cliente
-- Verificação de formação e alertas no preenchimento de campos
+- Customer listing
+- Adding a new customer
+- Editing a customer
+- Verification of training and alerts when filling in fields
 
-
-## Demonstração
+## Demos
 ![Criação de usuario](/exemplo1.gif)
 ![Alertas na criação e edição](/exemplo2.gif)
 
 
 
 
-## Rodando os testes
+## Running Tests
 
-Para rodar os testes, rode o seguinte comando no back-end ou no front-end
+Run this command in back-end or front-end folders
 
 ```bash
   npm test
 ```
 
 
-## Variáveis de Ambiente
+## Env
 
-Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env do back-end
+To run this project you have to create a file called .env in the back-end folder
 
 ```bash
   PORT
@@ -40,7 +39,7 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
   MYSQLPASSWORD
   MYSQLDATABASE
 ```
-e no front-end
+and another .env file in front-end folder
 
 ```bash
 VITE_HOST
@@ -49,40 +48,40 @@ PORT
 ```
 
 
-## Instalação
+## Installing
 
-Crie um container utilizando Docker para o mysql
+Create a new mysql Docker container
 
 ```bash
   docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=password -d mysql
 ```
 
-No diretorio do projeto, mude de path para back-end
+Go to your back-end dir
 
 ```bash
   cd back-end/
 ```
-Instale as dependencias
+Install dependencies
 ```bash
   npm i
 ```
-Migre as migrations e preenchaa database
+Run the migrations and seed the database
 ```bash
   npm run db:reset
 ```
-Inicie o back-end
+Start the back-end
 ```bash
   npm run dev
 ```
-Vá para o diretório do front-end
+change to front-end dir
 ```bash
   cd ../front-end/
 ```
-Instale as dependencias
+Install dependencies
 ```bash
   npm i
 ```
-Inicie a aplicação
+Run front-end
 ```bash
   npm run dev
 ```
