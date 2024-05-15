@@ -1,5 +1,5 @@
 
-# Teste Fullstack: Client Management App
+# Test Fullstack: Client Management App
 
 In this challenge, I was required to develop a fullstack application that allows users to view and create customers. The application consists of two parts: the frontend and the backend. The frontend will be responsible for the user interface and communication with the API. The backend will handle the storage and management of customer data.
 
